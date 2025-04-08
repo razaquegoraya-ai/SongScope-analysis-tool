@@ -1,0 +1,11 @@
+flask==3.0.2
+numpy==1.26.4
+librosa==0.10.1
+essentia==2.1b6.dev1177
+soundfile==0.12.1
+tensorflow-macos==2.16.2
+torch==2.2.1
+demucs==4.0.1
+music21==9.1.0
+werkzeug==3.0.1
+scikit-learn==1.4.0
