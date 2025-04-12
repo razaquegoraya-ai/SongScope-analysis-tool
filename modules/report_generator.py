@@ -1,58 +1,61 @@
 import time
 
 class ReportGenerator:
-    def generate_report(self, song_name, composer, features, reception_scores):
-        report = f"""
-Song Analysis Report for "{song_name}" by {composer}
-Generated on {time.strftime('%B %d, %Y')}
+    def __init__(self):
+        pass
 
-1. Basic Information
--------------------
-• Song: {song_name}
-• Composer: {composer}
-• Analysis Date: {time.strftime('%B %d, %Y')}
-
-2. Musical Analysis
-------------------
-• Tempo: {features['tempo']:.1f} BPM
-• Key: {features['theory']['key']}
-• Mood: {features['mood']}
-• Energy Level: {features['energy']:.2f}/1.0
-• Vocal Clarity: {features['vocal_clarity']:.2f}/1.0
-• Instrumental Complexity: {features['instrumental_complexity']:.2f}/1.0
-
-3. Production Quality
---------------------
-• Mixing Quality: {'Good' if not features['mixing']['high_freq_noise'] else 'Needs Improvement'}
-• Production Score: {reception_scores['production_quality']:.2f}/1.0
-
-4. Reception Analysis
---------------------
-• Engagement Potential: {reception_scores['engagement']:.2f}/1.0
-• Overall Quality Score: {reception_scores['production_quality']:.2f}/1.0
-
-5. Recommendations
------------------
-{self._generate_recommendations(features, reception_scores)}
-"""
-        return report
-
-    def _generate_recommendations(self, features, reception_scores):
-        recommendations = []
-        
-        if features['vocal_clarity'] < 0.7:
-            recommendations.append("• Consider improving vocal clarity through better mixing and EQ")
-        
-        if features['instrumental_complexity'] < 0.5:
-            recommendations.append("• The instrumental arrangement could benefit from more complexity")
-        
-        if features['mixing']['high_freq_noise']:
-            recommendations.append("• Address high-frequency noise issues in the mix")
-        
-        if reception_scores['engagement'] < 0.6:
-            recommendations.append("• Work on increasing the song's energy and engagement")
-        
-        if not recommendations:
-            recommendations.append("• Great job! The song is well-produced and engaging")
-        
-        return "\n".join(recommendations) 
+    def generate_report(self, song_name: str, composer: str, features: dict) -> dict:
+        try:
+            # Determine energy level
+            energy_level = "High" if features['energy'] > 0.6 else "Medium" if features['energy'] > 0.3 else "Low"
+            
+            # Generate interpretation
+            interpretation = []
+            if features['tempo'] > 140:
+                interpretation.append("The fast tempo suggests an energetic and dynamic composition.")
+            elif features['tempo'] > 100:
+                interpretation.append("The moderate tempo indicates a balanced and engaging rhythm.")
+            else:
+                interpretation.append("The slower tempo creates a more contemplative and relaxed atmosphere.")
+            
+            interpretation.append(f"The composition in {features['key']} creates a distinct tonal character.")
+            
+            if features['energy'] > 0.6:
+                interpretation.append("The high energy levels suggest an uplifting and powerful musical experience.")
+            else:
+                interpretation.append("The calmer energy profile indicates a more introspective and nuanced musical expression.")
+            
+            # Generate recommendations
+            recommendations = []
+            if features['tempo'] > 140:
+                recommendations.append("Consider adding dynamic variations to maintain listener engagement.")
+            elif features['tempo'] < 100:
+                recommendations.append("Explore subtle rhythmic variations to enhance the musical flow.")
+            
+            if features['energy'] > 0.7:
+                recommendations.append("Consider adding moments of contrast to create more musical tension and release.")
+            elif features['energy'] < 0.3:
+                recommendations.append("Explore opportunities to add subtle dynamic variations to maintain listener interest.")
+            
+            if features['spectral_centroid'] > 3000:
+                recommendations.append("The bright spectral characteristics could be balanced with warmer tones.")
+            elif features['spectral_centroid'] < 1500:
+                recommendations.append("Consider adding some brighter elements to enhance the overall timbre.")
+            
+            # Create structured report
+            report = {
+                "tempo": features['tempo'],
+                "key": features['key'],
+                "energy": features['energy'],
+                "mood": features['mood'],
+                "spectral_centroid": features['spectral_centroid'],
+                "spectral_rolloff": features['spectral_rolloff'],
+                "interpretation": "\n".join(interpretation),
+                "recommendations": "\n".join(recommendations)
+            }
+            
+            return report
+            
+        except Exception as e:
+            print(f"Error generating report: {str(e)}")
+            raise

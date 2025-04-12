@@ -3,4 +3,4 @@ class ReceptionAnalyzer:
         # Placeholder model for reception analysis
         engagement = min(features['energy'] * 1.2, 1.0)
         quality = min(features['vocal_clarity'] + 0.03, 1.0)
-        return {'engagement': engagement, 'production_quality': quality} 
+        return {'engagement': engagement, 'production_quality': quality}
