@@ -1,27 +1,29 @@
 # SongScope Analysis Tool
 
-A powerful music analysis tool that provides detailed insights into song characteristics, including vocal separation, feature extraction, and reception analysis.
+SongScope is a powerful music analysis tool that provides detailed insights into your audio files. It analyzes various musical characteristics including tempo, key, energy, mood, and spectral features to generate comprehensive reports.
 
 ## Features
 
-- Vocal and instrumental track separation
-- Audio feature extraction (tempo, energy, mood, etc.)
-- Music theory analysis (key, mode, complexity)
-- Reception analysis and scoring
-- Detailed report generation
+- Audio file analysis (MP3, WAV)
+- Tempo detection
+- Key detection
+- Energy level analysis
+- Mood classification
+- Spectral feature analysis
+- Detailed interpretation and recommendations
 
 ## Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/razaquegoraya-ai/SongScope-analysis-tool.git
+git clone https://github.com/yourusername/SongScope-analysis-tool.git
 cd SongScope-analysis-tool
 ```
 
-2. Create and activate a virtual environment:
+2. Create a virtual environment (recommended):
 ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate  # On Windows, use: venv\Scripts\activate
 ```
 
 3. Install dependencies:
@@ -36,33 +38,62 @@ pip install -r requirements.txt
 python app.py
 ```
 
-2. Open your web browser and navigate to `http://localhost:5000`
+2. Open your web browser and navigate to:
+```
+http://localhost:5000
+```
 
-3. Upload an audio file (MP3 or WAV) and provide song details
+3. Upload your audio file:
+   - Enter the composer name
+   - Enter the song name
+   - Select an audio file (MP3 or WAV)
+   - Click "Analyze"
 
-4. View the analysis results
+4. View the analysis report:
+   - The report will be displayed on the results page
+   - You can download the report or analyze another song
 
 ## Project Structure
 
 ```
-song-analysis-app/
-├── app.py              # Main Flask application
-├── config.py           # Configuration settings
-├── requirements.txt    # Python dependencies
-├── modules/            # Analysis modules
-│   ├── audio_processor.py
-│   ├── feature_extractor.py
-│   ├── reception_analyzer.py
-│   ├── report_generator.py
-│   └── vocal_separator.py
-├── templates/          # HTML templates
-│   ├── index.html
-│   ├── results.html
-│   └── error.html
-├── static/            # Static files (CSS, JS)
-└── uploads/           # Uploaded audio files
+SongScope-analysis-tool/
+├── app.py                 # Main Flask application
+├── config.py             # Configuration settings
+├── requirements.txt      # Python dependencies
+├── modules/
+│   ├── audio_processor.py    # Audio processing module
+│   ├── feature_extractor.py  # Feature extraction module
+│   ├── report_generator.py   # Report generation module
+│   └── reception_analyzer.py # Reception analysis module
+├── templates/
+│   ├── index.html       # Main upload page
+│   ├── results.html     # Results display page
+│   └── error.html       # Error page
+└── uploads/             # Directory for uploaded files
 ```
+
+## Dependencies
+
+- Flask
+- librosa
+- essentia
+- numpy
+- soundfile
+- music21
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details. 
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Thanks to all contributors who have helped improve this tool
+- Special thanks to the open-source community for the amazing libraries used in this project# SongScope-analysis-tool
