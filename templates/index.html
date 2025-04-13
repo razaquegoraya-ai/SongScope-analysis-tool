@@ -133,7 +133,7 @@
             .container {
                 margin: 1rem;
             }
-            
+
             .card {
                 padding: 1.5rem;
             }
@@ -148,19 +148,20 @@
     <div class="container">
         <div class="header">
             <h1>SongScope</h1>
-            <p>Upload your song and get detailed musical analysis</p>
+            <p style="justify-self: unset;">Welcome to <strong>SongScope DNA Analysis!</strong> Upload your track to receive our proprietary AI-powered breakdown of its musical elements, emotional impact, and commercial potential. Our advanced analysis delivers actionable enhancement suggestions for composers, music supervisors, and label executives alike. Discover exactly how to elevate the song to its fullest potential.</p>
+            <p>Upload a song for a detailed musical analysis</p>
         </div>
-        
+
         <div class="card">
             <form action="/upload_file" method="POST" enctype="multipart/form-data">
                 <div class="mb-4">
-                    <label for="composer" class="form-label">Composer Name (optional)</label>
-                    <input type="text" class="form-control" id="composer" name="composer" placeholder="Enter composer name">
+                    <label for="composer" class="form-label">Composer's Name (Optional)</label>
+                    <input type="text" class="form-control" id="composer" name="composer" placeholder="Enter the composer's name">
                 </div>
 
                 <div class="mb-4">
-                    <label for="song_name" class="form-label">Song Name</label>
-                    <input type="text" class="form-control" id="song_name" name="song_name" placeholder="Enter song name" required>
+                    <label for="song_name" class="form-label">Song Title</label>
+                    <input type="text" class="form-control" id="song_name" name="song_name" placeholder="Enter the song title" required>
                 </div>
 
                 <div class="mb-4">
@@ -189,7 +190,7 @@
 
         // Drag and drop functionality
         const dropZone = document.querySelector('.file-upload');
-        
+
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
             dropZone.addEventListener(eventName, preventDefaults, false);
         });
